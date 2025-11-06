@@ -1,0 +1,23 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Local data files
+data.db
+
+# Logs and cache
+*.log
+*.sqlite3
+.cache/
+.env
+
+# Git and editor configs
+.git
+.gitignore
+.vscode/
+.idea/

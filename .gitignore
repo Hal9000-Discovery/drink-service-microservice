@@ -1,2 +1,28 @@
-# ignore all .txt files
-TestToIgnoreFile.txt
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Virtual env
+.venv/
+env/
+venv/
+
+# VSCode
+.vscode/
+
+# Docker
+*.log
+*.pid
+
+# Test/Reports
+htmlcov/
+coverage/
+playwright-report/
+test-results/
+
+# System files
+.DS_Store
+Thumbs.db
