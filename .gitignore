@@ -26,3 +26,10 @@ test-results/
 # System files
 .DS_Store
 Thumbs.db
+
+
+
+# Ignore environment and sensitive files
+AI_Agents/.env
+AI_Agents/simpleAIAgent_ChatGpt.py
+*.env
