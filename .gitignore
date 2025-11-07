@@ -1,35 +1,39 @@
-# Python
+# ===============================================
+# PYTHON & ENVIRONMENT SETTINGS
+# ===============================================
+
+# Ignore Python cache and virtual environments
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.db
-
-# Virtual env
+*.pdb
 .venv/
-env/
 venv/
+env/
+ENV/
 
-# VSCode
-.vscode/
+# ===============================================
+# ENVIRONMENT FILES
+# ===============================================
+# Ignore real environment secrets
+.env
+*.env.local
+*.env.secret
+# Allow example env templates
+!*.env.example
 
-# Docker
+# ===============================================
+# LOGS, TEST OUTPUTS, and MISC
+# ===============================================
 *.log
-*.pid
+*.tmp
+*.bak
+*.swp
 
-# Test/Reports
-htmlcov/
-coverage/
-playwright-report/
-test-results/
-
-# System files
+# ===============================================
+# IDE / TOOLING
+# ===============================================
+.vscode/
+.idea/
 .DS_Store
-Thumbs.db
-
-
-
-# Ignore environment and sensitive files
-AI_Agents/.env
-AI_Agents/simpleAIAgent_ChatGpt.py
-*.env
