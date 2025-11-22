@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project 
+    name="Drink Service Automated Test Suite"
+    resourceRoot=""
+    soapui-version="5.7.0"
+    xmlns:con="http://eviware.com/soapui/config">
+
+    <!-- ============================
+         PROJECT PROPERTIES
+    ============================= -->
+    <con:properties>
+        <con:property name="BaseURL" value="http://localhost:5002"/>
+    </con:properties>
+
+
+    <!-- ============================
+         REST INTERFACE DEFINITION
+    ============================= -->
+    <con:interfaces>
+        <con:restService
+            id="DrinkServiceREST"
+            name="DrinkService REST API"
+            basePath="/">
+            <con:endpoints>
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+            </con:endpoints>
+
+            <con:resources>
+
+                <!-- /drinks -->
+                <con:resource name="drinks" path="/drinks">
+                    <con:methods>
+
+                        <!-- POST /drinks -->
+                        <con:method name="CreateDrink" method="POST">
+                            <con:request name="POST Create Drink">
+                                <con:mediaType>application/json</con:mediaType>
+                                <con:request><![CDATA[
+{
+    "name": "Sample Drink",
+    "description": "Created from SoapUI"
+}
+                                ]]></con:request>
+                            </con:request>
+                        </con:method>
+
+                        <!-- GET /drinks -->
+                        <con:method name="GetDrinks" method="GET">
+                            <con:request name="GET Drinks"/>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+                <!-- /drinks/{id} -->
+                <con:resource name="drinkById" path="/drinks/{id}">
+                    <con:parameters>
+                        <con:parameter name="id" style="TEMPLATE" default="1"/>
+                    </con:parameters>
+                    <con:methods>
+
+                        <!-- GET /drinks/{id} -->
+                        <con:method name="GetDrink" method="GET">
+                            <con:request name="GET Drink by ID"/>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+                <!-- /prices -->
+                <con:resource name="prices" path="/prices">
+                    <con:methods>
+
+                        <!-- POST /prices -->
+                        <con:method name="CreatePrice" method="POST">
+                            <con:request name="POST Create Price">
+                                <con:mediaType>application/json</con:mediaType>
+                                <con:request><![CDATA[
+{
+    "drink_id": 1,
+    "price_amount": "2.99",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                                ]]></con:request>
+                            </con:request>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+            </con:resources>
+        </con:restService>
+    </con:interfaces>
+
+
+
+    <!-- ============================
+         TEST SUITE
+    ============================= -->
+    <con:testSuite name="Drink Service Regression Suite">
+
+        <!-- ========== Create Drink ========== -->
+        <con:testCase name="Create Drink">
+            <con:properties>
+                <con:property name="drinkName" value="AutoDrink-${=System.currentTimeMillis()}"/>
+            </con:properties>
+
+            <con:testStep type="restrequest" name="POST Create Drink">
+                <con:settings/>
+                <con:restRequest method="POST">
+                    <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                    <con:resourcePath>/drinks</con:resourcePath>
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:request><![CDATA[
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Automated test drink"
+}
+                    ]]></con:request>
+
+                    <con:assertion type="ValidHttpStatusCodes">
+                        <con:statusCodes>201</con:statusCodes>
+                    </con:assertion>
+
+                    <con:assertion type="JsonPathMatchAssertion">
+                        <con:jsonPath>$.name</con:jsonPath>
+                        <con:expectedValue>${#TestCase#drinkName}</con:expectedValue>
+                    </con:assertion>
+                </con:restRequest>
+            </con:testStep>
+
+        </con:testCase>
+
+
+        <!-- ========== Get Drink ========== -->
+        <con:testCase name="Get Drink">
+            <con:properties>
+                <con:property name="drinkId" value="1"/>
+            </con:properties>
+
+            <con:testStep type="restrequest" name="GET Drink by ID">
+                <con:restRequest method="GET">
+                    <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                    <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                    <con:assertion type="ValidHttpStatusCodes">
+                        <con:statusCodes>200</con:statusCodes>
+                    </con:assertion>
+
+                    <con:assertion type="JsonPathExistsAssertion">
+                        <con:jsonPath>$.name</con:jsonPath>
+                    </con:assertion>
+                </con:restRequest>
+            </con:testStep>
+        </con:testCase>
+
+
+        <!-- ========== Create Price ========== -->
+        <con:testCase name="Create Price">
+            <con:properties>
+                <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+            </con:properties>
+
+            <con:testStep type="restrequest" name="POST Create Price">
+                <con:restRequ

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project 
+    name="DrinkService-TestSuite-Minimal"
+    xmlns:con="http://eviware.com/soapui/config">
+
+    <con:properties>
+        <con:property name="BaseURL" value="http://localhost:5002"/>
+    </con:properties>
+
+    <!-- ============================
+         INTERFACE (Working)
+    ============================ -->
+    <con:interfaces>
+        <con:restService 
+            id="DrinkServiceREST" 
+            name="DrinkService REST API"
+            basePath="/">
+
+            <con:endpoints>
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+            </con:endpoints>
+
+            <con:resources>
+
+                <con:resource name="drinks" path="/drinks">
+                    <con:methods>
+                        <con:method name="CreateDrink" method="POST"/>
+                    </con:methods>
+                </con:resource>
+
+            </con:resources>
+
+        </con:restService>
+    </con:interfaces>
+
+
+    <!-- ============================
+         TEST SUITE (Minimum allowed)
+    ============================ -->
+    <con:testSuite name="Regression Suite">
+
+        <con:testCase name="Create Drink Test">
+
+            <con:testStep type="restrequest" name="POST Create Drink">
+                <con:restRequest method="POST">
+                    <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                    <con:resourcePath>/drinks</con:resourcePath>
+
+                    <con:request><![CDATA[
+{
+    "name": "SoapUITest",
+    "description": "Test drink"
+}
+                    ]]></con:request>
+
+                </con:restRequest>
+            </con:testStep>
+
+        </con:testCase>
+
+    </con:testSuite>
+
+</con:soapui-project>

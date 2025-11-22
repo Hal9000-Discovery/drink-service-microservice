@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ebfd4908-02be-418c-8fe3-7c14c3c08a97" activeEnvironment="Default" name="DrinkServiceProject" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="38032370-1f3c-486d-ac37-31e2589482d7" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:5002" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://localhost:5002</con:endpoint></con:endpoints><con:resource name="drinks" path="/drinks" id="8e94c105-a611-43b1-8f98-554ecbffb867"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/></con:parameter></con:parameters><con:method name="GET" id="de44d702-2057-4808-88a6-a9049494c2cb" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="16b5def4-b12f-4f1c-bae1-6c9ddf43b7b7" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request/><con:originalUri>http://localhost/drinks</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method><con:method name="POST" id="a6b5e247-cdfa-456b-95de-22c4680e0cba" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/><con:element xmlns:drin="http://localhost/drinks">drin:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="0c20e8d5-655e-48d0-b1ea-a4fef3d24568" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="drinksById" path="/drinks/{id}" id="a3f649e3-48ca-4b9f-b93e-840bcbf2c7d1"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value>1</con:value><con:style>TEMPLATE</con:style><con:default>1</con:default></con:parameter></con:parameters><con:method name="POST" id="223abadb-4b36-4169-b2ba-7b965e114a6b" method="GET"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/html; charset=utf-8</con:mediaType><con:status>405</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ns="http://localhost/drinks/1">ns:Response</con:element></con:representation><con:request name="Request 1" id="23eacd42-6653-4a55-82a1-d7bfac3df9d3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request/><con:originalUri>http://localhost/drinks/1</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="2" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="prices" path="/prices" id="c1c36981-ccb0-471f-93ef-4d85ddfab830"><con:settings/><con:parameters/><con:method name="POST" id="97d642e5-8c22-426b-a9fe-4176f6b656e1" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html; charset=utf-8</con:mediaType><con:status>400</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="7add13d6-31a3-4a3f-ad64-6bff0eafffd1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request/><con:originalUri>http://localhost/prices</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite name="DrinkService Regression Suite" id="e2b8b28e-8e4d-416c-bb89-85e6b610f247">
+
+    <!-- ============================
+         Test Case 1: Create Drink
+    ============================ -->
+    <con:settings/><con:testCase name="Create Drink Test" id="f6104b78-9ca4-4370-9b31-9f1db83f96bb">
+        <con:settings/><con:properties>
+            
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink" id="6dca9a34-2576-4968-8c2d-88686da562ba">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 2: Get Drink
+    ============================ -->
+    <con:testCase name="Get Drink Test">
+
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink by ID">
+            <con:restRequest method="GET">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3: Create Price
+    ============================ -->
+    <con:testCase name="Create Price Test">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/prices</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite name="DrinkService Regression Suite" id="665c1285-8ef8-466f-a3cf-7ce7396a9403">
+
+    <!-- ============================
+         Test Case 1: Create Drink
+    ============================ -->
+    <con:settings/><con:testCase name="Create Drink Test" id="3b05bda2-948a-4826-87a1-8da6c47d832f">
+        <con:settings/><con:properties>
+            
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink" id="55d485b1-bc93-4ce4-bfc1-e3f2016231c3">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 2: Get Drink
+    ============================ -->
+    <con:testCase name="Get Drink Test">
+
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink by ID">
+            <con:restRequest method="GET">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3: Create Price
+    ============================ -->
+    <con:testCase name="Create Price Test">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/prices</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite name="DrinkService Regression Suite" id="929db5e3-415f-4025-bbf1-60a4a9119ec0">
+
+    <!-- ============================
+         Test Case 1: Create Drink
+    ============================ -->
+    <con:settings/><con:testCase name="Create Drink Test" id="596734f8-0b79-44e4-892a-f5f95371d42d">
+        <con:settings/><con:properties>
+            
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink" id="a365e3b8-f400-4b7e-905e-7c3233ced79e">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 2: Get Drink
+    ============================ -->
+    <con:testCase name="Get Drink Test">
+
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink by ID">
+            <con:restRequest method="GET">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3: Create Price
+    ============================ -->
+    <con:testCase name="Create Price Test">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/prices</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite name="DrinkService Regression Suite" id="f35c4ffa-e2a6-49d5-af74-331aed9cbc90">
+
+    <!-- ============================
+         Test Case 1: Create Drink
+    ============================ -->
+    <con:settings/><con:testCase name="Create Drink Test" id="cc0272e8-55fc-476a-b4ce-61eebfc169d9">
+        <con:settings/><con:properties>
+            
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink" id="bd5448a5-ef72-4308-a73b-e21bc0ddbe14">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 2: Get Drink
+    ============================ -->
+    <con:testCase name="Get Drink Test">
+
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink by ID">
+            <con:restRequest method="GET">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3: Create Price
+    ============================ -->
+    <con:testCase name="Create Price Test">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/prices</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite name="DrinkService Regression Suite" id="56b67339-1495-46f5-a5f3-f117f28b65b0">
+
+    <!-- ============================
+         Test Case 1: Create Drink
+    ============================ -->
+    <con:settings/><con:testCase name="Create Drink Test" id="b9285220-6be7-403b-8fc1-78a4e5f534db">
+        <con:settings/><con:properties>
+            
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink" id="a45ed96c-f79d-4128-9e2f-128a92678db5">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 2: Get Drink
+    ============================ -->
+    <con:testCase name="Get Drink Test">
+
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink by ID">
+            <con:restRequest method="GET">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/drinks/${#TestCase#drinkId}</con:resourcePath>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3: Create Price
+    ============================ -->
+    <con:testCase name="Create Price Test">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest method="POST">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:resourcePath>/prices</con:resourcePath>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite name="DrinkService Regression Suite" id="499b8d08-dd0a-4f15-8921-5f4167de75c6">
+
+    <!-- ============================
+         Test Case 1 — GET /drinks
+    ============================ -->
+    <con:settings/><con:testCase name="Get All Drinks" id="e4ded389-8447-42b5-9936-34816d7f9a4d">
+        <con:settings/><con:testStep type="restrequest" name="GET All Drinks" id="99d46812-0808-44f8-b275-3a828c23e599">
+            <con:restRequest methodName="GET" service="http://localhost:5002" resourcePath="/drinks">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+
+                <!-- Expect 200 OK -->
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        <con:settings/><con:config xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep>
+    <con:properties/></con:testCase>
+
+
+    <!-- ============================
+         Test Case 2 — POST /drinks
+    ============================ -->
+    <con:testCase name="Create Drink">
+        <con:properties>
+            <con:property name="drinkName" value="AutoDrink-${=System.currentTimeMillis()}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Drink">
+            <con:restRequest methodName="POST" service="http://localhost:5002" resourcePath="/drinks">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "name": "${#TestCase#drinkName}",
+    "description": "Created by automated SoapUI test"
+}
+                </con:request>
+
+                <!-- Expect 201 Created -->
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 3 — GET /drinks/{id}
+         NOTE: Using drinkId = 1 for now
+    ============================ -->
+    <con:testCase name="Get Drink By ID">
+        <con:properties>
+            <con:property name="drinkId" value="1"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="GET Drink By ID">
+            <con:restRequest methodName="GET" service="http://localhost:5002" resourcePath="/drinks/${#TestCase#drinkId}">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+
+                <!-- Expect 200 OK -->
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>200</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+
+    <!-- ============================
+         Test Case 4 — POST /prices
+    ============================ -->
+    <con:testCase name="Create Price">
+        <con:properties>
+            <con:property name="priceAmount" value="${=Math.floor(Math.random()*5)+1}.${=Math.floor(Math.random()*99)}"/>
+        </con:properties>
+
+        <con:testStep type="restrequest" name="POST Create Price">
+            <con:restRequest methodName="POST" service="http://localhost:5002" resourcePath="/prices">
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                <con:mediaType>application/json</con:mediaType>
+
+                <con:request>
+{
+    "drink_id": 1,
+    "price_amount": "${#TestCase#priceAmount}",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                </con:request>
+
+                <!-- Expect 201 Created -->
+                <con:assertion type="ValidHttpStatusCodes">
+                    <con:statusCodes>201</con:statusCodes>
+                </con:assertion>
+            </con:restRequest>
+        </con:testStep>
+    </con:testCase>
+
+<con:properties/></con:testSuite><con:testSuite id="00d182c3-ef9c-4a93-befd-096f957b0668" name="DrinkService Regression Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="73241fba-fd2d-4bf7-80aa-130e0077ffbf" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get All Drinks" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="REST Request" id="ffee3721-0932-4a93-bb78-623be924930b"><con:settings/><con:config service="http://localhost:5002" resourcePath="/drinks" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="REST Request" id="16b5def4-b12f-4f1c-bae1-6c9ddf43b7b7" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request/><con:originalUri>http://localhost/drinks</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="afaa0e1d-5d03-42c2-8ceb-02663b7c6825" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Create Drink" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="REST Request" id="d9f9d335-f166-47c0-86a5-816be70b2a1c"><con:settings/><con:config service="http://localhost:5002" resourcePath="/drinks" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="REST Request" id="0c20e8d5-655e-48d0-b1ea-a4fef3d24568" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:5002</con:endpoint><con:request>{
+  "name": "${#TestCase#drinkName}",
+  "description": "${#TestCase#drinkDescription}"
+}
+</con:request><con:originalUri>http://localhost/drinks</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>drinkName</con:name><con:value>Drink_${=UUID.randomUUID().toString().substring(0,8)} </con:value></con:property><con:property><con:name>drinkDescription</con:name><con:value>Created at ${=System.currentTimeMillis()} </con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

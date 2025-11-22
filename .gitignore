@@ -37,3 +37,14 @@ ENV/
 .vscode/
 .idea/
 .DS_Store
+
+# ===============================================
+# DATABASE FILES
+# ===============================================
+# Ignore all database files
+*.db
+*.sqlite
+*.sqlite3
+*.sqbpro
+# But keep test data SQL files
+!data/*.sql

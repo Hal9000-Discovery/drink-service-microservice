@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project 
+    name="DrinkService-WithTestSuite"
+    xmlns:con="http://eviware.com/soapui/config">
+
+    <con:properties>
+        <con:property name="BaseURL" value="http://localhost:5002"/>
+    </con:properties>
+
+    <!-- ============================
+         INTERFACE
+    ============================ -->
+    <con:interfaces>
+        <con:restService 
+            id="DrinkServiceREST" 
+            name="DrinkService REST API"
+            basePath="/">
+
+            <con:endpoints>
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+            </con:endpoints>
+
+            <con:resources>
+
+                <con:resource name="drinks" path="/drinks">
+                    <con:methods>
+
+                        <!-- POST /drinks -->
+                        <con:method name="CreateDrink" method="POST">
+                            <con:request name="POST Create Drink">
+                                <con:mediaType>application/json</con:mediaType>
+                                <con:request><![CDATA[
+{
+    "name": "FromInterface",
+    "description": "Interface Test"
+}
+                                ]]></con:request>
+                            </con:request>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+            </con:resources>
+        </con:restService>
+    </con:interfaces>
+
+
+    <!-- ============================
+         TEST SUITE
+    ============================ -->
+    <con:testSuite name="Regression Suite">
+
+        <con:testCase name="Create Drink Test">
+
+            <con:testStep type="restrequest" name="POST Create Drink">
+                <con:restRequest method="POST">
+                    <con:endpoint>${#Project#BaseURL}</con:endpoint>
+                    <con:resourcePath>/drinks</con:resourcePath>
+                    <con:mediaType>application/json</con:mediaType>
+
+                    <con:request><![CDATA[
+{
+    "name": "SoapUITest-${=System.currentTimeMillis()}",
+    "description": "Created by automated SoapUI test"
+}
+                    ]]></con:request>
+
+                    <con:assertion type="ValidHttpStatusCodes">
+                        <con:statusCodes>201</con:statusCodes>
+                    </con:assertion>
+
+                </con:restRequest>
+            </con:testStep>
+
+        </con:testCase>
+
+    </con:testSuite>
+
+</con:soapui-project>

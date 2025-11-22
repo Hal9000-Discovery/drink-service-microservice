@@ -1,0 +1,153 @@
+{
+  "info": {
+    "name": "DrinkService Automated Tests",
+    "_postman_id": "c7f120c1-fad9-4e56-b04e-automated-tests",
+    "description": "Automated API tests for Drink Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Dynamic Drink",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "let rand = Math.floor(Math.random() * 1000000);",
+              "pm.environment.set('drink_name', 'Automated Drink ' + rand);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 201', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "let json = pm.response.json();",
+              "pm.environment.set('drink_id', json.id);",
+              "pm.test('Drink ID exists', function () {",
+              "  pm.expect(json.id).to.be.a('number');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{drink_name}}\",\n  \"description\": \"Automated Test Drink\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/drinks",
+          "host": ["{{base_url}}"],
+          "path": ["drinks"]
+        }
+      }
+    },
+    {
+      "name": "Create Dynamic Price",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "let price = (Math.random() * 10 + 1).toFixed(2);",
+              "pm.environment.set('price_amount', price);",
+              "let d = new Date().toISOString().split('T')[0];",
+              "pm.environment.set('today', d);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 201', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "let json = pm.response.json();",
+              "pm.test('Price belongs to the drink', function () {",
+              "  pm.expect(json.drink_id).to.eql(Number(pm.environment.get('drink_id')));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"drink_id\": {{drink_id}},\n  \"price_amount\": {{price_amount}},\n  \"effective_date\": \"{{today}}\",\n  \"end_date\": null\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/prices",
+          "host": ["{{base_url}}"],
+          "path": ["prices"]
+        }
+      }
+    },
+    {
+      "name": "Get Created Drink",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "let json = pm.response.json();",
+              "pm.test('Drink name matches', function () {",
+              "  pm.expect(json.name).to.eql(pm.environment.get('drink_name'));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/drinks/{{drink_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["drinks", "{{drink_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Prices for Drink",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "let json = pm.response.json();",
+              "pm.test('Returned prices list', function () {",
+              "  pm.expect(json.length).to.be.above(0);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/prices/{{drink_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["prices", "{{drink_id}}"]
+        }
+      }
+    }
+  ]
+}

@@ -3,11 +3,11 @@
 # ------------------------------------
 FROM python:3.13-slim
 
-# Prevent Python from buffering output
+# Prevent Python from buffering output (makes logging immediate)
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set working directory
+# Set working directory inside the container
 WORKDIR /app
 
 # ------------------------------------
@@ -21,31 +21,32 @@ RUN apt-get update && \
     ACCEPT_EULA=Y apt-get install -y msodbcsql17 && \
     rm -rf /var/lib/apt/lists/*
 
-
-
-
-
-
-
-
 # ------------------------------------
-# Install Python dependencies
+# Copy dependency files & install Python libs
 # ------------------------------------
-COPY requirements.txt /app/
+# Copy requirements first for better Docker build caching
+COPY requirements.txt .
+
+# Install dependencies (like Flask, SQLAlchemy, pyodbc, etc.)
 RUN pip install --no-cache-dir -r requirements.txt
 
 # ------------------------------------
-# Copy project files
+# Copy the entire project into the container
 # ------------------------------------
-COPY . /app
+COPY . .
 
-# Expose Flask port
+# ------------------------------------
+# Environment setup for Flask app
+# ------------------------------------
+# Expose the internal port Flask will run on
 EXPOSE 5001
 
-# Flask environment
-ENV FLASK_APP=main.py
-ENV FLASK_RUN_HOST=0.0.0.0
+# Default environment variables
 ENV FLASK_CONFIG=production
+ENV PORT=5001
 
-# Start the service
+# ------------------------------------
+# Run the application
+# ------------------------------------
+# Use environment variable for the port
 CMD ["python", "main.py"]

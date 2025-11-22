@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project 
+    name="DrinkService-RestRequests"
+    xmlns:con="http://eviware.com/soapui/config">
+
+    <con:properties>
+        <con:property name="BaseURL" value="http://localhost:5002"/>
+    </con:properties>
+
+    <con:interfaces>
+        <con:restService 
+            id="DrinkServiceREST" 
+            name="DrinkService REST API"
+            basePath="/">
+
+            <con:endpoints>
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+            </con:endpoints>
+
+            <con:resources>
+
+                <!-- /drinks -->
+                <con:resource name="drinks" path="/drinks">
+                    <con:methods>
+
+                        <!-- GET /drinks -->
+                        <con:method name="GetDrinks" method="GET">
+                            <con:request name="GET Drinks"/>
+                        </con:method>
+
+                        <!-- POST /drinks -->
+                        <con:method name="CreateDrink" method="POST">
+                            <con:request name="POST Create Drink">
+                                <con:mediaType>application/json</con:mediaType>
+                                <con:request><![CDATA[
+{
+    "name": "Sample Drink",
+    "description": "Created via SoapUI"
+}
+                                ]]></con:request>
+                            </con:request>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+                <!-- /drinks/{id} -->
+                <con:resource name="drinkById" path="/drinks/{id}">
+                    <con:parameters>
+                        <con:parameter name="id" style="TEMPLATE" default="1"/>
+                    </con:parameters>
+
+                    <con:methods>
+
+                        <!-- GET /drinks/{id} -->
+                        <con:method name="GetDrink" method="GET">
+                            <con:request name="GET Drink By ID"/>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+                <!-- /prices -->
+                <con:resource name="prices" path="/prices">
+                    <con:methods>
+
+                        <!-- POST /prices -->
+                        <con:method name="CreatePrice" method="POST">
+                            <con:request name="POST Create Price">
+                                <con:mediaType>application/json</con:mediaType>
+                                <con:request><![CDATA[
+{
+    "drink_id": 1,
+    "price_amount": "3.50",
+    "effective_date": "2025-01-01",
+    "end_date": null
+}
+                                ]]></con:request>
+                            </con:request>
+                        </con:method>
+
+                    </con:methods>
+                </con:resource>
+
+            </con:resources>
+        </con:restService>
+    </con:interfaces>
+
+</con:soapui-project>

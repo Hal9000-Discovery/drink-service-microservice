@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="DrinkService-Minimal" id="d9385be8-59d3-43e5-82f1-b033084c025a" activeEnvironment="Default" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" soapui-version="5.9.1" xmlns:con="http://eviware.com/soapui/config">
+
+    <con:settings/><con:properties>
+        
+    </con:properties>
+
+    <con:interfaces>
+        <con:restService id="DrinkServiceREST" name="DrinkService REST API" basePath="/">
+
+            <con:endpoints>
+                <con:endpoint>${#Project#BaseURL}</con:endpoint>
+            </con:endpoints>
+
+            <con:resources>
+
+                <!-- /drinks -->
+                <con:resource name="drinks" path="/drinks">
+                    <con:methods>
+                        <con:method name="GetDrinks" method="GET">
+                            <con:request name="GET Drinks"/>
+                        </con:method>
+                    </con:methods>
+                </con:resource>
+
+            </con:resources>
+
+        </con:restService>
+    </con:interfaces>
+
+<con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
